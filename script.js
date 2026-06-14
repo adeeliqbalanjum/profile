@@ -6,6 +6,19 @@ if (saved) {
   root.dataset.theme = 'light';
 }
 
+const hero = document.querySelector('.hero');
+if (hero && !hero.querySelector('.hero-blur-bg')) {
+  const mesh = document.createElement('div');
+  mesh.className = 'hero-blur-bg';
+  mesh.setAttribute('aria-hidden', 'true');
+  mesh.innerHTML = `
+    <span class="hero-mesh-ball one"></span>
+    <span class="hero-mesh-ball two"></span>
+    <span class="hero-mesh-ball three"></span>
+  `;
+  hero.prepend(mesh);
+}
+
 const themeToggle = document.getElementById('themeToggle');
 function syncThemeIcon() {
   themeToggle.textContent = root.dataset.theme === 'dark' ? '☾' : '☀';
